@@ -4,13 +4,10 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
-default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: Minos1994
-  socket: /var/run/mysqld/mysqld.sock
+
+ default: &default
+  adapter: postgresql
+  encoding: unicode
 
 development:
   <<: *default
@@ -22,4 +19,10 @@ development:
 test:
   <<: *default
   database: on-demand-economy_test
+
+  production:
+  <<: *default
+  database: On-demand_production
+  username: On-demand
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
 

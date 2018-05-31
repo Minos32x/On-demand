@@ -692,3 +692,1325 @@ Unpermitted parameter: passsword_confirmation
 Completed 201 Created in 168ms (Views: 0.2ms | ActiveRecord: 0.7ms)
 
 
+Started POST "/signup" for 127.0.0.1 at 2018-05-30 10:38:01 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (62.9ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Mina", "email"=>"mino@yahoo.com", "password"=>"[FILTERED]", "phone"=>"01125287498"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`phone` = BINARY '01125287498' LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'mino@yahoo.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'mino@yahoo.com' LIMIT 1[0m
+Completed 401 Unauthorized in 311ms (Views: 0.2ms | ActiveRecord: 156.8ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-05-30 10:38:24 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Mina", "email"=>"minoasd@yahoo.com", "password"=>"[FILTERED]", "phone"=>"01125287498564"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`phone` = BINARY '01125287498564' LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'minoasd@yahoo.com' LIMIT 1[0m
+  [1m[35mSQL (153.9ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password_digest`, `created_at`, `updated_at`, `user_pin`, `phone`) VALUES ('Mina', 'minoasd@yahoo.com', '$2a$10$X0gvfnROe68ElX51P7MbYux7nLUbU00gpN2W2gvabQ/b84KnAwKDi', '2018-05-30 08:38:24', '2018-05-30 08:38:24', 9787, '01125287498564')[0m
+  [1m[35m (102.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minoasd@yahoo.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minoasd@yahoo.com' LIMIT 1[0m  [["email", "minoasd@yahoo.com"], ["LIMIT", 1]]
+Completed 201 Created in 471ms (Views: 0.3ms | ActiveRecord: 257.8ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-05-31 15:23:24 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.0.7) lib/active_record/migration.rb:573:in `check_pending!'
+activerecord (5.0.7) lib/active_record/migration.rb:549:in `call'
+actionpack (5.0.7) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.7) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.7) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.7) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.7) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.7) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.7) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.7) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.7) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.7) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.7) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.3ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (76.1ms)
+  [1m[35m (1581.8ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (244.1ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('5791641766103479545', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateUsers (20170306191048)
+  [1m[35m (265.0ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `email` varchar(255), `password_digest` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170306191048')[0m
+  [1m[35m (33.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrders (20180527090324)
+  [1m[35m (562.2ms)[0m  [1m[35mCREATE TABLE `orders` (`id` int AUTO_INCREMENT PRIMARY KEY, `images` json, `created_by` int, `from` varchar(255), `to` varchar(255), `provider_id` int, `provider_order_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180527090324')[0m
+  [1m[35m (90.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProviders (20180528132405)
+  [1m[35m (367.7ms)[0m  [1m[35mCREATE TABLE `providers` (`id` int AUTO_INCREMENT PRIMARY KEY, `url` varchar(255), `name` varchar(255), `rate` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180528132405')[0m
+  [1m[35m (44.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddVerificationToUsers (20180528140233)
+  [1m[35m (664.6ms)[0m  [1m[35mALTER TABLE `users` ADD `user_pin` int[0m
+  [1m[35m (797.8ms)[0m  [1m[35mALTER TABLE `users` ADD `verified` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180528140233')[0m
+  [1m[35m (45.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPhoneToUsers (20180528145327)
+  [1m[35m (406.6ms)[0m  [1m[35mALTER TABLE `users` ADD `phone` varchar(255)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180528145327')[0m
+  [1m[35m (32.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateAdmins (20180530140800)
+  [1m[35m (617.3ms)[0m  [1m[35mCREATE TABLE `admins` (`id` int AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (209.9ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_admins_on_email`  ON `admins` (`email`) [0m
+  [1m[35m (219.9ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_admins_on_reset_password_token`  ON `admins` (`reset_password_token`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180530140800')[0m
+  [1m[35m (49.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2018-05-31 13:24:59', '2018-05-31 13:24:59')[0m
+  [1m[35m (55.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT RELEASE_LOCK('5791641766103479545')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `admins`[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'admins'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `orders`[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'orders'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `providers`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'providers'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+Started POST "/signup" for 127.0.0.1 at 2018-05-31 15:25:25 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Mina", "email"=>"yassmin@gmail.com", "password"=>"[FILTERED]", "phone"=>"123456"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`phone` = BINARY '123456' LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password_digest`, `created_at`, `updated_at`, `user_pin`, `phone`) VALUES ('Mina', 'yassmin@gmail.com', '$2a$10$eJws6RF80JjXbYCH/uQX5ejCSfMsShx.pFtAUCPdabLIkDhH484aC', '2018-05-31 13:25:25', '2018-05-31 13:25:25', 8317, '123456')[0m
+  [1m[35m (110.7ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/registeration_confirmation.html.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.html.erb within layouts/mailer (1.1ms)
+  Rendering user_mailer/registeration_confirmation.text.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.text.erb within layouts/mailer (1.1ms)
+UserMailer#registeration_confirmation: processed outbound mail in 181.5ms
+Sent mail to yassmin@gmail.com (2920.0ms)
+Date: Thu, 31 May 2018 15:25:26 +0200
+From: Driveo
+To: yassmin@gmail.com
+Message-ID: <5b0ff7c651273_26062afe2d2d91041781e@mino-Lenovo-ideapad-320-15IKB.mail>
+Subject: Driveo Registeration
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b0ff7c650509_26062afe2d2d9104177ae";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b0ff7c650509_26062afe2d2d9104177ae
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Welcome to Driveo, Mina
+===============================================
+ 
+You have successfully signed up to Driveo,
+your username is: Mina.
+ 
+To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+ 
+Thanks for joining and have a great day!
+
+
+----==_mimepart_5b0ff7c650509_26062afe2d2d9104177ae
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Driveo, Mina</h1>
+    <p>
+      You have successfully signed up to Driveo,
+      your username is: <strong>Mina </strong>. <br>
+    </p>
+    <p>
+      To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b0ff7c650509_26062afe2d2d9104177ae--
+
+Completed 500 Internal Server Error in 3425ms (ActiveRecord: 115.5ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/auth/authenticate_user.rb:2:in `initialize'
+app/controllers/users_controller.rb:20:in `new'
+app/controllers/users_controller.rb:20:in `create'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.4ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.7ms)
+Started POST "/signup" for 127.0.0.1 at 2018-05-31 15:26:31 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Mina", "email"=>"yassmin@gmail.com", "password"=>"[FILTERED]", "phone"=>"123456"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`phone` = BINARY '123456' LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password_digest`, `created_at`, `updated_at`, `user_pin`, `phone`) VALUES ('Mina', 'yassmin@gmail.com', '$2a$10$DeM/oPNdLDOB4oYc0ufTieQYFbfEiM1wpada8zzkX9qm3c6Kjf5RO', '2018-05-31 13:26:31', '2018-05-31 13:26:31', 813, '123456')[0m
+  [1m[35m (396.3ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/registeration_confirmation.html.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.html.erb within layouts/mailer (0.7ms)
+  Rendering user_mailer/registeration_confirmation.text.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.text.erb within layouts/mailer (0.8ms)
+UserMailer#registeration_confirmation: processed outbound mail in 11.1ms
+Sent mail to yassmin@gmail.com (1854.1ms)
+Date: Thu, 31 May 2018 15:26:32 +0200
+From: Driveo
+To: yassmin@gmail.com
+Message-ID: <5b0ff808985_26062afe2d2d8fec180f5@mino-Lenovo-ideapad-320-15IKB.mail>
+Subject: Driveo Registeration
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b0ff807f3eb2_26062afe2d2d8fec1791a";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b0ff807f3eb2_26062afe2d2d8fec1791a
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Welcome to Driveo, Mina
+===============================================
+ 
+You have successfully signed up to Driveo,
+your username is: Mina.
+ 
+To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+ 
+Thanks for joining and have a great day!
+
+
+----==_mimepart_5b0ff807f3eb2_26062afe2d2d8fec1791a
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Driveo, Mina</h1>
+    <p>
+      You have successfully signed up to Driveo,
+      your username is: <strong>Mina </strong>. <br>
+    </p>
+    <p>
+      To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b0ff807f3eb2_26062afe2d2d8fec1791a--
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m  [["email", "yassmin@gmail.com"], ["LIMIT", 1]]
+Completed 201 Created in 2458ms (Views: 0.7ms | ActiveRecord: 398.4ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:27:18 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:31:01 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 3ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:32:40 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:34:56 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:37:07 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:38:03 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:38:21 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:38:46 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:39:01 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:39:38 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  
+ArgumentError (Before process_action callback :authorize_request has not been defined):
+  
+app/controllers/authentication_controller.rb:3:in `<class:AuthenticationController>'
+app/controllers/authentication_controller.rb:1:in `<top (required)>'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.0ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.6ms)
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:39:57 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:40:40 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/auth/authenticate_user.rb:2:in `initialize'
+app/controllers/authentication_controller.rb:6:in `new'
+app/controllers/authentication_controller.rb:6:in `authenticate'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.0ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.8ms)
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:41:48 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  
+SyntaxError (/home/mino/ITI/Final-Project/Project/on-demand-economy/app/controllers/authentication_controller.rb:3: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...rize_request,:is_verified  only: :authenticate
+...                           ^~~~):
+  
+app/controllers/authentication_controller.rb:3: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.6ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.6ms)
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:42:07 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/auth/authenticate_user.rb:2:in `initialize'
+app/controllers/authentication_controller.rb:6:in `new'
+app/controllers/authentication_controller.rb:6:in `authenticate'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.9ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.0ms)
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:44:47 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 78ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `find_by_email' for #<AuthenticationController:0x0000562a815aec70>):
+  
+app/controllers/authentication_controller.rb:6:in `authenticate'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.2ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (97.0ms)
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:45:03 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m  [["email", "yassmin@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 68ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:45:29 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassm@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassm@gmail.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `email' for nil:NilClass):
+  
+app/auth/authenticate_user.rb:4:in `initialize'
+app/controllers/authentication_controller.rb:7:in `new'
+app/controllers/authentication_controller.rb:7:in `authenticate'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.1ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.0ms)
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:45:46 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m  [["email", "yassmin@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 63ms (Views: 0.1ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:46:47 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m  [["email", "yassmin@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 66ms (Views: 0.2ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:48:08 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m  [["email", "yassmin@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 60ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:48:55 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m  [["email", "yassmin@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 61ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:50:37 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m  [["email", "yassmin@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 56ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:51:29 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m  [["email", "yassmin@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 57ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:53:02 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:53:23 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+Completed 422 Unprocessable Entity in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:55:03 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"yassmin@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'yassmin@gmail.com' LIMIT 1[0m  [["email", "yassmin@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 66ms (Views: 0.2ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-05-31 15:55:27 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Mina", "email"=>"minasamy@mail.com", "password"=>"[FILTERED]", "phone"=>"123456"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`phone` = BINARY '123456' LIMIT 1[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'minasamy@mail.com' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  Rendering user_mailer/registeration_confirmation.html.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.html.erb within layouts/mailer (1.2ms)
+  Rendering user_mailer/registeration_confirmation.text.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.text.erb within layouts/mailer (0.3ms)
+UserMailer#registeration_confirmation: processed outbound mail in 129.2ms
+Sent mail to minasamy@mail.com (2259.6ms)
+Date: Thu, 31 May 2018 15:55:28 +0200
+From: Driveo
+To: minasamy@mail.com
+Message-ID: <5b0ffed0240df_312e2aaefcd19a40786e2@mino-Lenovo-ideapad-320-15IKB.mail>
+Subject: Driveo Registeration
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b0ffed0232df_312e2aaefcd19a4078571";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b0ffed0232df_312e2aaefcd19a4078571
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Welcome to Driveo, Mina
+===============================================
+ 
+You have successfully signed up to Driveo,
+your username is: Mina.
+ 
+To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+ 
+Thanks for joining and have a great day!
+
+
+----==_mimepart_5b0ffed0232df_312e2aaefcd19a4078571
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Driveo, Mina</h1>
+    <p>
+      You have successfully signed up to Driveo,
+      your username is: <strong>Mina </strong>. <br>
+    </p>
+    <p>
+      To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b0ffed0232df_312e2aaefcd19a4078571--
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy@mail.com' LIMIT 1[0m
+Completed 401 Unauthorized in 2777ms (Views: 0.2ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-05-31 15:55:54 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Mina", "email"=>"minasamy@mail.com", "password"=>"[FILTERED]", "phone"=>"01235"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`phone` = BINARY '01235' LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'minasamy@mail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password_digest`, `created_at`, `updated_at`, `user_pin`, `phone`) VALUES ('Mina', 'minasamy@mail.com', '$2a$10$q.TbnMcVcmtkwI3dDi2BL.i4G89ldWyl7o.cEz6dc3KrnOTZihShy', '2018-05-31 13:55:54', '2018-05-31 13:55:54', 8027, '01235')[0m
+  [1m[35m (167.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/registeration_confirmation.html.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.html.erb within layouts/mailer (1.1ms)
+  Rendering user_mailer/registeration_confirmation.text.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.text.erb within layouts/mailer (0.9ms)
+UserMailer#registeration_confirmation: processed outbound mail in 21.4ms
+Sent mail to minasamy@mail.com (2123.7ms)
+Date: Thu, 31 May 2018 15:55:54 +0200
+From: Driveo
+To: minasamy@mail.com
+Message-ID: <5b0ffeeaab4cb_312e2aaefcd19b58788b2@mino-Lenovo-ideapad-320-15IKB.mail>
+Subject: Driveo Registeration
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b0ffeeaaa354_312e2aaefcd19b58787d9";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b0ffeeaaa354_312e2aaefcd19b58787d9
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Welcome to Driveo, Mina
+===============================================
+ 
+You have successfully signed up to Driveo,
+your username is: Mina.
+ 
+To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+ 
+Thanks for joining and have a great day!
+
+
+----==_mimepart_5b0ffeeaaa354_312e2aaefcd19b58787d9
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Driveo, Mina</h1>
+    <p>
+      You have successfully signed up to Driveo,
+      your username is: <strong>Mina </strong>. <br>
+    </p>
+    <p>
+      To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b0ffeeaaa354_312e2aaefcd19b58787d9--
+
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy@mail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy@mail.com' LIMIT 1[0m  [["email", "minasamy@mail.com"], ["LIMIT", 1]]
+Completed 201 Created in 2502ms (Views: 0.7ms | ActiveRecord: 169.0ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:56:52 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"minasamy@mail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy@mail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy@mail.com' LIMIT 1[0m  [["email", "minasamy@mail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 69ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 15:59:25 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"minasamy@mail.com", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/auth/authenticate_user.rb:2:in `initialize'
+app/controllers/authentication_controller.rb:6:in `new'
+app/controllers/authentication_controller.rb:6:in `authenticate'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.9ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.9ms)
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 16:00:21 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"minasamy@mail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy@mail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy@mail.com' LIMIT 1[0m  [["email", "minasamy@mail.com"], ["LIMIT", 1]]
+Completed 200 OK in 118ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/signup" for 127.0.0.1 at 2018-05-31 16:03:18 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Mina", "email"=>"minasamy65@mail.com", "password"=>"[FILTERED]", "phone"=>"01284782991"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`phone` = BINARY '01284782991' LIMIT 1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'minasamy65@mail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password_digest`, `created_at`, `updated_at`, `user_pin`, `phone`) VALUES ('Mina', 'minasamy65@mail.com', '$2a$10$Mn2bc0qX9pWr7J9kEGbwmeUWbYEEggGeWjEx3fHKwDAYKG3.HduOO', '2018-05-31 14:03:18', '2018-05-31 14:03:18', 8488, '01284782991')[0m
+  [1m[35m (117.3ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/registeration_confirmation.html.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.html.erb within layouts/mailer (1.2ms)
+  Rendering user_mailer/registeration_confirmation.text.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.text.erb within layouts/mailer (0.3ms)
+UserMailer#registeration_confirmation: processed outbound mail in 134.0ms
+Sent mail to minasamy65@mail.com (2548.7ms)
+Date: Thu, 31 May 2018 16:03:18 +0200
+From: Driveo
+To: minasamy65@mail.com
+Message-ID: <5b1000a6ae2b6_33aa2af7ca4bb8b42359c@mino-Lenovo-ideapad-320-15IKB.mail>
+Subject: Driveo Registeration
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b1000a6acff8_33aa2af7ca4bb8b423422";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b1000a6acff8_33aa2af7ca4bb8b423422
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Welcome to Driveo, Mina
+===============================================
+ 
+You have successfully signed up to Driveo,
+your username is: Mina.
+ 
+To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+ 
+Thanks for joining and have a great day!
+
+
+----==_mimepart_5b1000a6acff8_33aa2af7ca4bb8b423422
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Driveo, Mina</h1>
+    <p>
+      You have successfully signed up to Driveo,
+      your username is: <strong>Mina </strong>. <br>
+    </p>
+    <p>
+      To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b1000a6acff8_33aa2af7ca4bb8b423422--
+
+Completed 500 Internal Server Error in 2982ms (ActiveRecord: 119.2ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/auth/authenticate_user.rb:2:in `initialize'
+app/controllers/users_controller.rb:21:in `new'
+app/controllers/users_controller.rb:21:in `create'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.6ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (23.2ms)
+Started POST "/signup" for 127.0.0.1 at 2018-05-31 16:04:10 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Mina", "email"=>"minasamy65@mail.com", "password"=>"[FILTERED]", "phone"=>"01284782991"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`phone` = BINARY '01284782991' LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'minasamy65@mail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password_digest`, `created_at`, `updated_at`, `user_pin`, `phone`) VALUES ('Mina', 'minasamy65@mail.com', '$2a$10$JY0tF9EVucT9WIw4GjIjf.OVlEM/pIbwaJp834UqvBz8q11L3tmRW', '2018-05-31 14:04:10', '2018-05-31 14:04:10', 4906, '01284782991')[0m
+  [1m[35m (35.9ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/registeration_confirmation.html.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.html.erb within layouts/mailer (0.4ms)
+  Rendering user_mailer/registeration_confirmation.text.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.text.erb within layouts/mailer (0.3ms)
+UserMailer#registeration_confirmation: processed outbound mail in 6.5ms
+Sent mail to minasamy65@mail.com (2116.3ms)
+Date: Thu, 31 May 2018 16:04:10 +0200
+From: Driveo
+To: minasamy65@mail.com
+Message-ID: <5b1000dab3e4d_33aa2af7ca4bbae423711@mino-Lenovo-ideapad-320-15IKB.mail>
+Subject: Driveo Registeration
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b1000dab38bb_33aa2af7ca4bbae42367c";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b1000dab38bb_33aa2af7ca4bbae42367c
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Welcome to Driveo, Mina
+===============================================
+ 
+You have successfully signed up to Driveo,
+your username is: Mina.
+ 
+To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+ 
+Thanks for joining and have a great day!
+
+
+----==_mimepart_5b1000dab38bb_33aa2af7ca4bbae42367c
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Driveo, Mina</h1>
+    <p>
+      You have successfully signed up to Driveo,
+      your username is: <strong>Mina </strong>. <br>
+    </p>
+    <p>
+      To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b1000dab38bb_33aa2af7ca4bbae42367c--
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@mail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@mail.com' LIMIT 1[0m  [["email", "minasamy65@mail.com"], ["LIMIT", 1]]
+Completed 201 Created in 2349ms (Views: 0.4ms | ActiveRecord: 37.9ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 16:04:26 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"minasamy65@mail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@mail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@mail.com' LIMIT 1[0m  [["email", "minasamy65@mail.com"], ["LIMIT", 1]]
+Completed 200 OK in 110ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2018-05-31 16:04:39 +0200
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"minasamy65@mail.com"}
+Completed 422 Unprocessable Entity in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2018-05-31 16:06:32 +0200
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"minasamy65@mail.com"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@mail.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 146ms (ActiveRecord: 1.1ms)
+
+
+  
+NameError (undefined local variable or method `user' for #<UsersController:0x000055ef93b25c90>
+Did you mean?  @user):
+  
+app/controllers/users_controller.rb:45:in `forgot_password'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.6ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (107.0ms)
+Started POST "/forgot_password" for 127.0.0.1 at 2018-05-31 16:07:06 +0200
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"minasamy65@mail.com"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@mail.com' LIMIT 1[0m
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (0.4ms)
+  Rendering user_mailer/forgot_password.text.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.text.erb within layouts/mailer (0.3ms)
+UserMailer#forgot_password: processed outbound mail in 6.1ms
+Sent mail to minasamy65@mail.com (2134.5ms)
+Date: Thu, 31 May 2018 16:07:06 +0200
+From: Driveo
+To: minasamy65@mail.com
+Message-ID: <5b10018a2d5f4_33aa2af7ca4bba582397e@mino-Lenovo-ideapad-320-15IKB.mail>
+Subject: Driveo Reset Password
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b10018a2d03a_33aa2af7ca4bba58238fd";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b10018a2d03a_33aa2af7ca4bba58238fd
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+User#forgot_password
+
+, find me in app/views/user_mailer/forgot_password.text.erb
+
+
+----==_mimepart_5b10018a2d03a_33aa2af7ca4bba58238fd
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Attention, Mina</h1>
+    <p>
+      Click Here To Reset Your Password:  http://localhost:3000/reset_password/?hash=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1Mjc4NjIwMjZ9.B91iLkIpya0RupTYGW5akn08gO4WvtFTK8K-QhdIOrk <br>
+    </p>
+    <p>
+     <strong> Safely Ignore This Message If You Didn't Made This Request </strong>
+    </p>
+    <p>Regards Driveo Team</p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b10018a2d03a_33aa2af7ca4bba58238fd--
+
+Completed 200 OK in 2158ms (Views: 0.7ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2018-05-31 16:08:02 +0200
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"minasamy65@mail.com"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@mail.com' LIMIT 1[0m
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (0.5ms)
+  Rendering user_mailer/forgot_password.text.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.text.erb within layouts/mailer (0.3ms)
+UserMailer#forgot_password: processed outbound mail in 8.7ms
+Sent mail to minasamy65@mail.com (2231.6ms)
+Date: Thu, 31 May 2018 16:08:02 +0200
+From: Driveo
+To: minasamy65@mail.com
+Message-ID: <5b1001c2de7e9_33aa2af7ca4bb8b4241a7@mino-Lenovo-ideapad-320-15IKB.mail>
+Subject: Driveo Reset Password
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b1001c2de1d1_33aa2af7ca4bb8b424091";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b1001c2de1d1_33aa2af7ca4bb8b424091
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+User#forgot_password
+
+, find me in app/views/user_mailer/forgot_password.text.erb
+
+
+----==_mimepart_5b1001c2de1d1_33aa2af7ca4bb8b424091
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Attention, Mina</h1>
+    <p>
+      Click Here To Reset Your Password:  http://localhost:3000/reset_password/?hash=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1Mjc4NjIwODJ9.BI4tA8h31iWR1kpMDL68xtlk6jbZ4YrGPMTXZ0lItDs <br>
+    </p>
+    <p>
+     <strong> Safely Ignore This Message If You Didn't Made This Request </strong>
+    </p>
+    <p>Regards Driveo Team</p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b1001c2de1d1_33aa2af7ca4bb8b424091--
+
+Completed 200 OK in 2243ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2018-05-31 16:09:09 +0200
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"minasamy65@gmail.com"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@gmail.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/users_controller.rb:44:in `forgot_password'
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.3ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/mino/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionpack-5.0.7/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.6ms)
+Started POST "/signup" for 127.0.0.1 at 2018-05-31 16:09:31 +0200
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"Mina", "email"=>"minasamy65@gmail.com", "password"=>"[FILTERED]", "phone"=>"01284782991"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`phone` = BINARY '01284782991' LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'minasamy65@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`name`, `email`, `password_digest`, `created_at`, `updated_at`, `user_pin`, `phone`) VALUES ('Mina', 'minasamy65@gmail.com', '$2a$10$p08XkoFEM4qC5I9ZE7VUXOPhM1he1TYlF.5VkDh3/8SEWf7gVoOAe', '2018-05-31 14:09:31', '2018-05-31 14:09:31', 2449, '01284782991')[0m
+  [1m[35m (76.3ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/registeration_confirmation.html.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.html.erb within layouts/mailer (0.9ms)
+  Rendering user_mailer/registeration_confirmation.text.erb within layouts/mailer
+  Rendered user_mailer/registeration_confirmation.text.erb within layouts/mailer (1.0ms)
+UserMailer#registeration_confirmation: processed outbound mail in 27.7ms
+Sent mail to minasamy65@gmail.com (1968.2ms)
+Date: Thu, 31 May 2018 16:09:31 +0200
+From: Driveo
+To: minasamy65@gmail.com
+Message-ID: <5b10021b50e96_33aa2af7ca4bb9cc24315@mino-Lenovo-ideapad-320-15IKB.mail>
+Subject: Driveo Registeration
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b10021b50082_33aa2af7ca4bb9cc242fc";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b10021b50082_33aa2af7ca4bb9cc242fc
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+Welcome to Driveo, Mina
+===============================================
+ 
+You have successfully signed up to Driveo,
+your username is: Mina.
+ 
+To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+ 
+Thanks for joining and have a great day!
+
+
+----==_mimepart_5b10021b50082_33aa2af7ca4bb9cc242fc
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Driveo, Mina</h1>
+    <p>
+      You have successfully signed up to Driveo,
+      your username is: <strong>Mina </strong>. <br>
+    </p>
+    <p>
+      To login to the site, just follow this link: https://minamon.herokuapp.com/auth/login.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b10021b50082_33aa2af7ca4bb9cc242fc--
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@gmail.com' LIMIT 1[0m  [["email", "minasamy65@gmail.com"], ["LIMIT", 1]]
+Completed 201 Created in 2274ms (Views: 0.3ms | ActiveRecord: 77.6ms)
+
+
+Started POST "/auth/login" for 127.0.0.1 at 2018-05-31 16:09:43 +0200
+Processing by AuthenticationController#authenticate as */*
+  Parameters: {"email"=>"minasamy65@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@gmail.com' LIMIT 1[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@gmail.com' LIMIT 1[0m  [["email", "minasamy65@gmail.com"], ["LIMIT", 1]]
+Completed 200 OK in 112ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/forgot_password" for 127.0.0.1 at 2018-05-31 16:09:47 +0200
+Processing by UsersController#forgot_password as */*
+  Parameters: {"email"=>"minasamy65@gmail.com"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'minasamy65@gmail.com' LIMIT 1[0m
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (2.5ms)
+  Rendering user_mailer/forgot_password.text.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.text.erb within layouts/mailer (0.8ms)
+UserMailer#forgot_password: processed outbound mail in 33.1ms
+Sent mail to minasamy65@gmail.com (1890.7ms)
+Date: Thu, 31 May 2018 16:09:47 +0200
+From: Driveo
+To: minasamy65@gmail.com
+Message-ID: <5b10022bac8b5_33aa2af7ca4bb940245e7@mino-Lenovo-ideapad-320-15IKB.mail>
+Subject: Driveo Reset Password
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5b10022bab882_33aa2af7ca4bb94024499";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5b10022bab882_33aa2af7ca4bb94024499
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+User#forgot_password
+
+, find me in app/views/user_mailer/forgot_password.text.erb
+
+
+----==_mimepart_5b10022bab882_33aa2af7ca4bb94024499
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Attention, Mina</h1>
+    <p>
+      Click Here To Reset Your Password:  http://localhost:3000/reset_password/?hash=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1Mjc4NjIxODd9.JSqeWCPlUUgPrC9curGWumQ171l2sevSd4I6aU0TC-I <br>
+    </p>
+    <p>
+     <strong> Safely Ignore This Message If You Didn't Made This Request </strong>
+    </p>
+    <p>Regards Driveo Team</p>
+  </body>
+</html>
+  </body>
+</html>
+
+----==_mimepart_5b10022bab882_33aa2af7ca4bb94024499--
+
+Completed 200 OK in 1929ms (Views: 0.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/reset_password/?hash=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1Mjc4NjIxODd9.JSqeWCPlUUgPrC9curGWumQ171l2sevSd4I6aU0TC-I" for 127.0.0.1 at 2018-05-31 16:14:12 +0200
+Processing by UsersController#reset_password as */*
+  Parameters: {"password"=>"[FILTERED]", "hash"=>"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1Mjc4NjIxODd9.JSqeWCPlUUgPrC9curGWumQ171l2sevSd4I6aU0TC-I"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`phone` = BINARY '01284782991' AND (`users`.`id` != 6) LIMIT 1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'minasamy65@gmail.com' AND (`users`.`id` != 6) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE `users` SET `password_digest` = '$2a$10$vYxiQRaWHQ7nyXcg4XwGu.OlNLkFhbliepPszPmVaODyqozwkTAhO', `updated_at` = '2018-05-31 14:14:12' WHERE `users`.`id` = 6[0m
+  [1m[35m (99.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 163ms (Views: 1.9ms | ActiveRecord: 101.1ms)
+
+
